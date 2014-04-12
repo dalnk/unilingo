@@ -17,6 +17,15 @@ class ChatController < WebsocketRails::BaseController
   end
   
   def user_msg(ev, msg)
+    print "\n\n\n"
+    print "dennis sucks\n"
+    print "ROOM:\n"
+    print connection_store[:room]
+    print "USER:\n"
+    print connection_store[:user]
+    print "\n\n\n"
+
+
     WebsocketRails[connection_store[:room]].trigger ev, {
       user_name:        connection_store[:user][:user_name], 
       user_id:          connection_store[:user][:user_id],
