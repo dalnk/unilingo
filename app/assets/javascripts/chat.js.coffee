@@ -49,7 +49,7 @@ class Chat.Controller
     console.log("Done binding events.");
 
   newMessage: (message) =>
-    console.log("Message received: " + message)
+    console.log("Message received: " + message['msg_body'])
     @messageQueue.push message
     @shiftMessageQueue() if @messageQueue.length > 15
     @appendMessage message
