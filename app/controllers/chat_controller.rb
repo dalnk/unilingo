@@ -44,9 +44,9 @@ class ChatController < WebsocketRails::BaseController
   
   def new_user
     user_hash = message[:user_id].to_s + message[:room].to_s
-    puts user_hash
+    print user_hash
 
-    puts { 
+    print { 
       user_name: sanitize(message[:user_name]),
       user_id: message[:user_id],
       user_image_url: message[:user_image_url],
