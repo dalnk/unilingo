@@ -143,6 +143,29 @@ a.c1 {font-weight: normal;}
     </style>
   </head>
   <body class="" id="grid">
+
+
+    <div id="chat" class="well" data-uri="<%= request.host %>:<%= request.port %>/websocket">
+</div>
+
+<div class="form-inline well">
+  <fieldset>
+    <input type="text" class="input-medium" id="user_name">
+    <input type="text" class="input-xlarge" id="message">
+    <button id="send" class="btn btn-primary">Send</button>
+  </fieldset>
+</div>
+
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <h3>Users</h3>
+            <ul class="nav nav-list" id="user-list">
+              <li class="nav-header">Active</li>
+            </ul>
+          </div>
+        </div>
+
+
     <div class="browser-landing" id="main">
       <div class="compact marquee">
         <div id="info" style="visibility: visible;">

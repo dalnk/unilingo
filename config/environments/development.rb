@@ -26,4 +26,7 @@ Unilingo::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  # for websocket-rails: https://github.com/DanKnox/websocket-rails/wiki/Installation-and-Setup
+  config.middleware.delete Rack::Lock
 end
