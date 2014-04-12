@@ -15,23 +15,16 @@
 
 -->
 </style>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=latin" rel="stylesheet">
 <body>
 
 <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
 
 <h3>Unilingo</h3>
 
-<p>
-<input class="button" type="button" value="Show participants!" id="showParticipants" 
-    style="visibility:hidden;"
-    onClick="showParticipants()"/>
-</p>
-
 <div id="participantsDiv"></div>
 
 <hr>
-
-<p><a href="http://developers.google.com/+/hangouts/getting-started">Read the docs</a> to learn more about developing hangouts!</a></p>
 
 <script>
 function showParticipants() {
@@ -82,10 +75,6 @@ gadgets.util.registerOnLoadHandler(init);
     </script>
     <meta charset="utf-8">
     <meta content="initial-scale=1, minimum-scale=1, width=device-width" name="viewport">
-    <meta content="Google Chrome is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier." name="description">
-    <title>
-      Chrome Browser
-    </title>
     <link href="https://plus.google.com/100585555255542998765" rel="publisher">
     <link href="https://www.google.com/images/icons/product/chrome-32.png" rel="icon" type="image/ico">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&subset=latin" rel="stylesheet">
@@ -155,14 +144,6 @@ a.c1 {font-weight: normal;}
   </head>
   <body class="" id="grid">
     <div class="browser-landing" id="main">
-      <div class="compact marquee-stacked" id="marquee">
-        <div class="marquee-copy">
-          <h1>
-            <a class="c1" href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">Web
-            Speech API</a> Demonstration
-          </h1>
-        </div>
-      </div>
       <div class="compact marquee">
         <div id="info" style="visibility: visible;">
           <p id="info_start" style="display: none;">
@@ -190,35 +171,12 @@ a.c1 {font-weight: normal;}
             Permission to use microphone is blocked. To change, go to
             chrome://settings/contentExceptions#media-stream
           </p>
-          <p id="info_upgrade" style="display: none;">
-            Web Speech API is not supported by this browser. Upgrade to <a href="https://www.google.com/chrome">Chrome</a> version 25 or later.
-          </p>
         </div>
         <div id="div_start">
           <button id="start_button" onclick="startButton(event)" style="display: inline-block;"><img alt="Start" id="start_img" src="file:///intl/en/chrome/assets/common/images/content/mic-slash.gif"></button>
         </div>
         <div id="results">
           <span class="final" id="final_span"></span> <span class="interim" id="interim_span"></span>
-        </div>
-        <div id="copy">
-          <button class="button" id="copy_button" onclick="copyButton()" style="display: none;">Copy and Paste</button>
-          <div id="copy_info" style="display: none;">
-            <p>
-              Press Control-C to copy text.
-            </p>
-            <p>
-              (Command-C on Mac.)
-            </p>
-          </div><button class="button" id="email_button" onclick="emailButton()" style="display: none;">Create
-          Email</button>
-          <div id="email_info" style="display: none;">
-            <p>
-              Text sent to default email application.
-            </p>
-            <p>
-              (See chrome://settings/handlers to change.)
-            </p>
-          </div>
         </div>
         <div class="compact marquee" id="div_language">
           <select id="select_language" onchange="updateCountry()">
@@ -355,17 +313,17 @@ if (!('webkitSpeechRecognition' in window)) {
   recognition.onstart = function() {
     recognizing = true;
     showInfo('info_speak_now');
-    start_img.src = '/intl/en/chrome/assets/common/images/content/mic-animate.gif';
+    start_img.src = '//www.google.com/intl/en/chrome/assets/common/images/content/mic-animate.gif';
   };
 
   recognition.onerror = function(event) {
     if (event.error == 'no-speech') {
-      start_img.src = '/intl/en/chrome/assets/common/images/content/mic.gif';
+      start_img.src = '//www.google.com/intl/en/chrome/assets/common/images/content/mic.gif';
       showInfo('info_no_speech');
       ignore_onend = true;
     }
     if (event.error == 'audio-capture') {
-      start_img.src = '/intl/en/chrome/assets/common/images/content/mic.gif';
+      start_img.src = '//www.google.com/intl/en/chrome/assets/common/images/content/mic.gif';
       showInfo('info_no_microphone');
       ignore_onend = true;
     }
@@ -384,7 +342,7 @@ if (!('webkitSpeechRecognition' in window)) {
     if (ignore_onend) {
       return;
     }
-    start_img.src = '/intl/en/chrome/assets/common/images/content/mic.gif';
+    start_img.src = '//www.google.com/intl/en/chrome/assets/common/images/content/mic.gif';
     if (!final_transcript) {
       showInfo('info_start');
       return;
@@ -486,7 +444,7 @@ function startButton(event) {
   ignore_onend = false;
   final_span.innerHTML = '';
   interim_span.innerHTML = '';
-  start_img.src = '/intl/en/chrome/assets/common/images/content/mic-slash.gif';
+  start_img.src = '//www.google.com/intl/en/chrome/assets/common/images/content/mic-slash.gif';
   showInfo('info_allow');
   showButtons('none');
   start_timestamp = event.timeStamp;
