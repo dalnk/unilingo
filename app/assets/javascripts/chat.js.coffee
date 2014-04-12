@@ -17,11 +17,13 @@ class Chat.Controller
   template: (message) ->
     html =
       """
-      <div class="message" >
+      <div class="message-#{message.user_type} message-block" >
         <label class="label label-info">
           [#{message.received}] #{message.user_name}
         </label>
         <div class="circle_crop user_icon">
+          <img class="user_icon_img" src="#{message.user_image_url}">
+        </div>
         <div class="message-bubble">
           #{message.msg_body}
         </div>
@@ -50,6 +52,9 @@ class Chat.Controller
 
   newMessage: (message) =>
     console.log("Message received: " + message['msg_body'])
+
+    message['user_type'] = "them"
+    message['user_type'] = "me" if message['user_id'] == @user.user_id
     @messageQueue.push message
     @shiftMessageQueue() if @messageQueue.length > 15
     @appendMessage message
