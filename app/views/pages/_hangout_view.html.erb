@@ -161,6 +161,39 @@ gadgets.util.registerOnLoadHandler(init);
     display: none;
     margin: 0 70px;
     }
+    #chat {
+  position: relative;
+  height: 600px;
+  width: 100%;
+  background-color: #DDD;
+  overflow-y: scroll; 
+  overflow-x: hidden;
+  padding-top:10px;
+  padding-bottom:10px;
+}
+
+.circle_crop { 
+  border-radius: 50%;
+  border: 2px #FFF solid;
+  overflow: hidden;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+  img.blurred-image {
+    -webkit-filter: blur(6px);
+    -moz-filter: blur(6px);
+    -o-filter: blur(6px);
+    filter: blur(6px);
+  }
+}
+
+.user_icon {
+  width: 60px;
+  height: 60px;
+}
+
+.user_icon_img {
+  width: 60px;
+  height: 60px;
+}
     .message-me:after, .message-them:after, .message-sys:after {
       clear: both;
       content: ".";
@@ -310,10 +343,8 @@ a.c1 {font-weight: normal;}
 
   </head>
   <body class="" id="grid">
-
-
-    <div id="chat" class="well" data-uri="<%= request.host %>:<%= request.port %>/websocket">
-</div>
+    <div id="chat" data-uri="<%= request.host %>:<%= request.port %>/websocket">
+    </div>
 
 <div class="form-inline well" style="color:white;">
   <fieldset>
