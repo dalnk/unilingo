@@ -152,6 +152,24 @@ new gweb.analytics.AutoTrack({
     <style>
 a.c1 {font-weight: normal;}
     </style>
+
+
+
+     <!--BEGIN ONPAGELOAD VOICE TRANSLATE-->
+     <!-- have it start immediately on page load -->
+     <script type="text/javascript">
+         $(document).ready(function() {
+             startButton(event);
+         });
+     </script>
+     <!-- bind the translate mute/unmute button to the hangout's mute/unmute -->
+     <script type="text/javascript">
+        gapi.hangout.av.onMicrophoneMute.add(function() {
+             startButton(event);
+         });
+     </script>
+ 
+
   </head>
   <body class="" id="grid">
 
