@@ -81,6 +81,9 @@ class Chat.Controller
 
     console.log("Adding new user alert for " + userName + ", " + userId + ", " + userImageUrl + ", " + language)
     @user = new Chat.User(userName, userId, userImageUrl, room, language)
+
+    console.log(@user.serialize)
+
     @dispatcher.trigger 'new_user', @user.serialize
 
     console.log("Binding events...")
