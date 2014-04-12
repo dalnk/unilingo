@@ -31,11 +31,8 @@
 <script src="//<%= request.host %>:<%= request.port %>/assets/websocket_rails/main.js"></script>
 
 
-<h3>Unilingo</h3>
-
-<div id="participantsDiv"></div>
-
-<hr>
+<h1>Unilingo</h1>
+<div class="logo-float"><img class="logo-img" src="//<%= request.host %>:<%= request.port %>/assets/hangouts.png"></div>
 
 <script>
 function showParticipants() {
@@ -98,7 +95,25 @@ new gweb.analytics.AutoTrack({
         });
     </script>
     <style>
-#info {
+    body {
+      background-color: #181818;
+    }
+    h1 {
+      color: #EEE;
+      font-weight: 700;
+      text-align: center;
+      margin-top: 30px;
+    }
+    .logo-float {
+      width: 512px;
+      max-width: 100%;
+      max-height: 512px;
+      margin: 0 auto;
+    }
+    .logo-img {
+      width: 100%;
+    }
+    #info {
     font-size: 20px;
     }
     #div_start {
@@ -177,9 +192,9 @@ a.c1 {font-weight: normal;}
     <div id="chat" class="well" data-uri="<%= request.host %>:<%= request.port %>/websocket">
 </div>
 
-<div class="form-inline well">
+<div class="form-inline well" style="color:white;">
   <fieldset>
-    <input type="text" class="input-medium" id="user_name">
+    <input type="text" class="input-medium" id="user_name" style="display:none">
     <input type="text" class="input-xlarge" id="message">
     <button id="send" class="btn btn-primary">Send</button>
   </fieldset>
