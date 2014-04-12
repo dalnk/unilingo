@@ -18,7 +18,7 @@ class ChatController < WebsocketRails::BaseController
       user_name:  connection_store[:user][:user_name], 
       received:   Time.now.to_s(:short), 
       msg_body:   ERB::Util.html_escape(msg) 
-      }
+    }
   end
   
   def client_connected
