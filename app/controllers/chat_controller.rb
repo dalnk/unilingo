@@ -16,8 +16,8 @@ class ChatController < WebsocketRails::BaseController
     }
   end
   
-  def user_msg(ev, msg, user_name, user_id, user_image_url, language)
-    WebsocketRails[connection_store[:room]].trigger ev, {
+  def user_msg(ev, msg, user_name, user_id, user_image_url, language, room)
+    WebsocketRails[room].trigger ev, {
       user_name:        user_name, 
       user_id:          user_id,
       user_image_url:   user_image_url,
@@ -39,7 +39,7 @@ class ChatController < WebsocketRails::BaseController
     puts user
     puts "bye dennis"
 
-    user_msg :new_message, message[:msg_body].dup, user["user_name"], user["user_id"], user["user_image_url"], user["language"]
+    user_msg :new_message, message[:msg_body].dup, user["user_name"], user["user_id"], user["user_image_url"], user["language"], user["room"]
   end
   
   def new_user
