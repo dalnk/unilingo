@@ -29,6 +29,10 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+gem 'redis', '~> 3.0.7'
+gem 'thin'
+gem 'websocket-rails', git: 'git://github.com/DanKnox/websocket-rails.git'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
