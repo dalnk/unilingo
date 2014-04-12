@@ -46,8 +46,10 @@ class Chat.Controller
     $('input#user_name').on 'keyup', @updateUserInfo
     $('#send').on 'click', @sendMessage
     $('#message').keypress (e) -> $('#send').click() if e.keyCode == 13
+    console.log("Done binding events.");
 
   newMessage: (message) =>
+    console.log("Message received: " + message)
     @messageQueue.push message
     @shiftMessageQueue() if @messageQueue.length > 15
     @appendMessage message
