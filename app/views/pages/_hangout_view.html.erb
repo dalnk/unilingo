@@ -89,11 +89,6 @@ gadgets.util.registerOnLoadHandler(init);
     <link href="https://www.google.com/intl/en/chrome/assets/common/css/chrome.min.css" rel="stylesheet">
     <script src="./speechToText_files/autotrack.js">
 </script>
-    <script>
-new gweb.analytics.AutoTrack({
-          profile: 'UA-26908291-1'
-        });
-    </script>
     <style>
     body {
       background-color: #181818;
@@ -103,6 +98,9 @@ new gweb.analytics.AutoTrack({
       font-weight: 700;
       text-align: center;
       margin-top: 30px;
+    }
+    label {
+      display: none;
     }
     .logo-float {
       width: 512px;
@@ -162,6 +160,57 @@ new gweb.analytics.AutoTrack({
     #copy > div {
     display: none;
     margin: 0 70px;
+    }
+    .message-bubble {
+      -webkit-box-shadow: rgb(220, 224, 230) 0px 1px 0px 0px;
+      background-color: rgb(247, 247, 247);
+      background-image: -webkit-linear-gradient(bottom, rgb(242, 242, 242), rgb(255, 255, 255));
+      border-bottom-color: rgba(0, 0, 0, 0.290196);
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      border-bottom-style: solid;
+      border-bottom-width: 1px;
+      border-collapse: collapse;
+      border-image-outset: 0px;
+      border-image-repeat: stretch;
+      border-image-slice: 100%;
+      border-image-source: none;
+      border-image-width: 1;
+      border-left-color: rgba(0, 0, 0, 0.180392);
+      border-left-style: solid;
+      border-left-width: 1px;
+      border-right-color: rgba(0, 0, 0, 0.180392);
+      border-right-style: solid;
+      border-right-width: 1px;
+      border-top-color: rgba(0, 0, 0, 0.180392);
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      border-top-style: solid;
+      border-top-width: 1px;
+      box-shadow: rgb(220, 224, 230) 0px 1px 0px 0px;
+      clear: none;
+      color: rgb(62, 69, 76);
+      display: block;
+      float: left;
+      font-family: Helvetica, Arial, 'lucida grande', tahoma, verdana, arial, sans-serif;
+      font-size: 16px;
+      height: auto;
+      margin-bottom: 5px;
+      margin-left: 1px;
+      margin-right: 0px;
+      margin-top: 5px;
+      max-width: 490px;
+      min-height: 14px;
+      min-width: 14px;
+      padding-bottom: 3px;
+      padding-left: 5px;
+      padding-right: 6px;
+      padding-top: 4px;
+      position: relative;
+      text-align: left;
+      text-shadow: rgba(255, 255, 255, 0.498039) 0px 1px 0px;
+      width: auto;
+      word-wrap: break-word;
     }
     </style>
     <style>

@@ -14,8 +14,11 @@ class Chat.Controller
       <div class="message" >
         <label class="label label-info">
           [#{message.received}] #{message.user_name}
-        </label>&nbsp;
-        #{message.msg_body}
+        </label>
+        <div class="circle_crop user_icon">
+        <div class="message-bubble">
+          #{message.msg_body}
+        </div>
       </div>
       """
     $(html)
