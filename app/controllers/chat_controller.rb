@@ -46,21 +46,21 @@ class ChatController < WebsocketRails::BaseController
     user_hash = message[:user_id].to_s + message[:room].to_s
     print user_hash
 
-    print { 
+    print({ 
       user_name: sanitize(message[:user_name]),
       user_id: message[:user_id],
       user_image_url: message[:user_image_url],
       room: message[:room],
       language: message[:language]
-    }
+    })
 
-    $redis.set user_hash, { 
+    $redis.set(user_hash, { 
       user_name: sanitize(message[:user_name]),
       user_id: message[:user_id],
       user_image_url: message[:user_image_url],
       room: message[:room],
       language: message[:language]
-    }.to_json
+    }.to_json)
 
     puts "new user saved in redis; dennis sucks"
   end
