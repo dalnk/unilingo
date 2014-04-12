@@ -43,11 +43,11 @@ class ChatController < WebsocketRails::BaseController
   end
   
   def new_user
-    print "fuck you dennis"
+    puts "fuck you dennis"
     user_hash = message[:user_id].to_s + message[:room].to_s
-    print user_hash
+    puts user_hash
 
-    print({ 
+    puts({ 
       user_name: sanitize(message[:user_name]),
       user_id: message[:user_id],
       user_image_url: message[:user_image_url],
