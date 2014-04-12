@@ -57,7 +57,7 @@ class Chat.Controller
   sendMessage: (event) =>
     event.preventDefault()
     message = $('#message').val()
-    @dispatcher.trigger 'new_message', {user_name: @user.user_name, msg_body: message}
+    @dispatcher.trigger 'new_message', {user_name: @user.user_name, msg_body: message, user_id: @user.user_id, room: @user.room }
     $('#message').val('')
 
   updateUserList: (userList) =>

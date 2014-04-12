@@ -16,21 +16,12 @@ class ChatController < WebsocketRails::BaseController
     }
   end
   
-  def user_msg(ev, msg)
-    print "\n\n\n"
-    print "dennis sucks\n"
-    print "ROOM:\n"
-    print connection_store[:room]
-    print "USER:\n"
-    print connection_store[:user]
-    print "\n\n\n"
-
-
+  def user_msg(ev, msg, user_name, user_id, user_image_url, language)
     WebsocketRails[connection_store[:room]].trigger ev, {
-      user_name:        connection_store[:user][:user_name], 
-      user_id:          connection_store[:user][:user_id],
-      user_image_url:   connection_store[:user][:user_image_url],
-      language:         connection_store[:user][:language],
+      user_name:        user_name, 
+      user_id:          user_id,
+      user_image_url:   user_image_url,
+      language:         language,
       received:         Time.now.to_s(:short), 
       msg_body:         ERB::Util.html_escape(msg) 
     }
@@ -41,20 +32,27 @@ class ChatController < WebsocketRails::BaseController
   end
   
   def new_message
-    user_msg :new_message, message[:msg_body].dup
+    user_hash = message[:user_id].to_s + message[:room].to_s
+    user = JSON.parse($redis.get(user_hash))
+
+    puts "hi dennis"
+    puts user
+    puts "bye dennis"
+
+    user_msg :new_message, message[:msg_body].dup, user["user_name"], user["user_id"], user["user_image_url"], user["language"]
   end
   
   def new_user
-    connection_store[:user] = { 
+    user_hash = message[:user_id].to_s + message[:room].to_s
+    $redis.set user_hash, { 
       user_name: sanitize(message[:user_name]),
       user_id: message[:user_id],
       user_image_url: message[:user_image_url],
       room: message[:room],
       language: message[:language]
-    }
-    connection_store[:room] = message[:room]
-    connection_store[:room] = "fuck dennis"
-    broadcast_user_list
+    }.to_json
+
+    puts "new user saved in redis; dennis sucks"
   end
   
   def change_username
