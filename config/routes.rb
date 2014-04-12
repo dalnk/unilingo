@@ -3,6 +3,7 @@ Unilingo::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   get 'hangout' => 'pages#hangout'
+  get 'hangout_view' => 'pages#hangout_view'
 
   # You can have the root of your site routed with "root"
   root 'landing#index'
