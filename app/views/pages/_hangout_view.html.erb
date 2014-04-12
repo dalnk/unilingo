@@ -62,8 +62,11 @@ function init() {
       function(eventObj) {
         if (eventObj.isApiReady) {
 
+          var chatController2 = new Chat.Controller($('#chat').data('uri'), true);
+
           console.log("Trying to join room");
-          chatController.joinRoom(
+          console.log(gapi.hangout.getLocalParticipant());
+          chatController2.joinRoom(
             gapi.hangout.getHangoutId(),
             gapi.hangout.getLocalParticipant().displayName,
             gapi.hangout.getLocalParticipant().id,

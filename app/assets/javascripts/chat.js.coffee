@@ -1,5 +1,5 @@
-jQuery ->
-  window.chatController = new Chat.Controller($('#chat').data('uri'), true);
+# jQuery ->
+#   window.chatController = new Chat.Controller($('#chat').data('uri'), true);
 
 window.Chat = {}
 
