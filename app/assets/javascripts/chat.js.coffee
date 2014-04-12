@@ -4,8 +4,14 @@ jQuery ->
 window.Chat = {}
 
 class Chat.User
-  constructor: (@user_name) ->
-  serialize: => { user_name: @user_name }
+  constructor: (@user_name, @user_id, @user_image_url, @room, @language) ->
+  serialize: => { 
+    user_name: @user_name,
+    user_id: @user_id,
+    user_image_url: @user_image_url,
+    room: @room,
+    language: @language
+  }
 
 class Chat.Controller
   template: (message) ->
@@ -32,12 +38,11 @@ class Chat.Controller
   constructor: (url,useWebSockets) ->
     @messageQueue = []
     @dispatcher = new WebSocketRails(url,useWebSockets)
-    @dispatcher.on_open = @createGuestUser
-    @bindEvents()
+
 
   bindEvents: =>
-    @dispatcher.bind 'new_message', @newMessage
-    @dispatcher.bind 'user_list', @updateUserList
+    @channel.bind 'new_message', @newMessage
+    @channel.bind 'user_list', @updateUserList
     $('input#user_name').on 'keyup', @updateUserInfo
     $('#send').on 'click', @sendMessage
     $('#message').keypress (e) -> $('#send').click() if e.keyCode == 13
@@ -63,10 +68,24 @@ class Chat.Controller
     $('#username').html @user.user_name
     @dispatcher.trigger 'change_username', @user.serialize()
 
-  appendMessage: (message) ->
+  appendMessage: (message) =>
     messageTemplate = @template(message)
     $('#chat').append messageTemplate
     messageTemplate.slideDown 140
+
+  joinRoom: (room, userName, userId, userImageUrl, language) =>
+    console.log("Subscribing to channel " + room)
+    @channel = @dispatcher.subscribe(room)
+
+    console.log("Adding new user alert for " + userName + ", " + userId + ", " + userImageUrl + ", " + language)
+    @user = new Chat.User(userName, userId, userImageUrl, room, language)
+    @dispatcher.trigger 'new_user', @user.serialize
+
+    console.log("Binding events...")
+    @bindEvents()
+
+    console.log("Done joining room " + room)
+
 
   shiftMessageQueue: =>
     @messageQueue.shift()

@@ -8,16 +8,22 @@ class ChatController < WebsocketRails::BaseController
   def system_msg(ev, msg)
     broadcast_message ev, { 
       user_name: 'system', 
+      user_id: -1,
+      user_image_url: 'http://google.com/1.jpg',
+      language: 'en',
       received: Time.now.to_s(:short), 
       msg_body: msg
     }
   end
   
   def user_msg(ev, msg)
-    broadcast_message ev, { 
-      user_name:  connection_store[:user][:user_name], 
-      received:   Time.now.to_s(:short), 
-      msg_body:   ERB::Util.html_escape(msg) 
+    WebsocketRails[connection_store[:room]].trigger ev, {
+      user_name:        connection_store[:user][:user_name], 
+      user_id:          connection_store[:user][:user_id],
+      user_image_url:   connection_store[:user][:user_image_url],
+      language:         connection_store[:user][:language],
+      received:         Time.now.to_s(:short), 
+      msg_body:         ERB::Util.html_escape(msg) 
     }
   end
   
@@ -30,7 +36,13 @@ class ChatController < WebsocketRails::BaseController
   end
   
   def new_user
-    connection_store[:user] = { user_name: sanitize(message[:user_name]) }
+    connection_store[:user] = { 
+      user_name: sanitize(message[:user_name]),
+      user_id: message[:user_id],
+      user_image_url: message[:user_image_url],
+      room: message[:room],
+      language: message[:language]
+    }
     broadcast_user_list
   end
   
