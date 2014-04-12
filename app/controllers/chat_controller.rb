@@ -43,6 +43,7 @@ class ChatController < WebsocketRails::BaseController
       room: message[:room],
       language: message[:language]
     }
+    connection_store[:room] = message[:room]
     broadcast_user_list
   end
   
