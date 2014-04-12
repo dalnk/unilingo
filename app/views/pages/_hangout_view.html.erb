@@ -68,7 +68,7 @@ function init() {
           console.log(gapi.hangout.getLocalParticipant());
           chatController2.joinRoom(
             gapi.hangout.getHangoutId(),
-            gapi.hangout.getLocalParticipant().displayName,
+            gapi.hangout.getLocalParticipant().person.displayName,
             gapi.hangout.getLocalParticipant().id,
             gapi.hangout.getLocalParticipant().person.image.url,
             'english'
