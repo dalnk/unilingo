@@ -44,6 +44,10 @@ class ChatController < WebsocketRails::BaseController
   
   def new_user
     puts "fuck you dennis"
+    puts "user id:" 
+    puts message[:user_id]
+    puts "room:"
+    puts message[:room]
     user_hash = message[:user_id].to_s + message[:room].to_s
     puts user_hash
 
