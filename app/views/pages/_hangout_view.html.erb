@@ -169,7 +169,7 @@ function showParticipants() {
     }
     #chat,#languages {
   position: relative;
-  height: calc(100% - 88px);
+  height: calc(100% - 100px);
   width: 300px;
   /*background-color: #DDD;*/
   overflow-y: scroll; 
@@ -267,10 +267,7 @@ margin-top: 5px;
 max-width: 206px;
 min-height: 14px;
 min-width: 14px;
-padding-bottom: 3px;
-padding-left: 5px;
-padding-right: 6px;
-padding-top: 4px;
+padding: 10px;
 position: relative;
 text-align: left;
 text-shadow: rgba(255, 255, 255, 0.498039) 0px 1px 0px;
@@ -621,7 +618,7 @@ function showButtons(style) {
 
       // // Wait for gadget to load.
       window.language_code = window.langs[language_code];                                                       
-      gadgets.util.registerOnLoadHandler(init(language_code));
+      init(language_code);
       startButton(event);
       event.preventDefault();
     });
