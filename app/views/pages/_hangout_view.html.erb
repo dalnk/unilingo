@@ -579,13 +579,12 @@ if (!('webkitSpeechRecognition' in window)) {
       }
     }
     final_transcript = capitalize(final_transcript);
-    final_span.innerHTML = linebreak(final_transcript);
+    $('#message').val(linebreak(final_transcript));
+    $('#send').click();
     interim_span.innerHTML = linebreak(interim_transcript);
     if (final_transcript) {
-      $('#message').val(final_transcript);
-      $('#send').click();
-      final_span.innerHTML = '';
-      final_transcript = '';
+      // final_span.innerHTML = '';
+      // final_transcript = '';
     }
   };
 }
