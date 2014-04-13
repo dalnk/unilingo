@@ -176,7 +176,7 @@ gadgets.util.registerOnLoadHandler(init);
   position: relative;
   height: auto;
   width: 100%;
-  background-color: #DDD;
+  /*background-color: #DDD;*/
   overflow-y: scroll; 
   overflow-x: hidden;
   padding-top:10px;
@@ -688,14 +688,6 @@ function showInfo(s) {
 
 var current_style;
 function showButtons(style) {
-  if (style == current_style) {
-    return;
-  }
-  current_style = style;
-  copy_button.style.display = style;
-  email_button.style.display = style;
-  copy_info.style.display = 'none';
-  email_info.style.display = 'none';
 }
     </script>
   
