@@ -355,6 +355,7 @@ a.c1 {font-weight: normal;}
      <!-- bind the translate mute/unmute button to the hangout's mute/unmute -->
      <script type="text/javascript">
         gapi.hangout.av.onMicrophoneMute.add(function() {
+                console.log("***MUTE IS BEING TOGGLED***");
              startButton(event);
          });
      </script>
