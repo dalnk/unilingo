@@ -487,7 +487,9 @@ if (!('webkitSpeechRecognition' in window)) {
     }
   };
 
+
   recognition.onend = function() {
+      console.log("*** END EVENT ***");
     recognizing = false;
     if (ignore_onend) {
       return;
