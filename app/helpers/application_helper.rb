@@ -33,18 +33,8 @@ class Client
     #in_text is the string to translate
     #lang is the language to translate to
     def self.translate(in_text, lang)
-        @source_url = "https://www.googleapis.com/language/translate/v2?q=QUESTION&target=TARGET&format=text&key=AIzaSyARRZoVs8THRTDbNM-t6uCYRsU0XofY_mQ"
-
-        #in_text = in_text.gsub(" ", "%20")
-        #puts @source_url
-        url = "#{@source_url}".sub("QUESTION", in_text).sub("TARGET", lang)
-        url = URI.escape(url)
-        #puts "\nhi\n"
-        #puts url
-        #puts "\nhi\n"
-        puts "___error___"
-        puts open(url)
-        puts "___error___"
+        @source_url = "https://www.googleapis.com/language/translate/v2?q=#{in_text}&target=#{lang}&format=text&key=AIzaSyARRZoVs8THRTDbNM-t6uCYRsU0XofY_mQ"
+        url = URI.escape(@source_url)
         res = JSON.load(open(url))
         return res["data"]["translations"].first["translatedText"]
     end
