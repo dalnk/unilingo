@@ -56,7 +56,6 @@ class ChatController < WebsocketRails::BaseController
   end
   
   def new_user
-    puts "fuck you dennis"
     puts message
     puts "user id:" 
     puts message[:user_id]
@@ -81,7 +80,7 @@ class ChatController < WebsocketRails::BaseController
       language: message[:language]
     }.to_json)
 
-    puts "new user saved in redis; dennis sucks"
+    puts "new user saved in redis;"
   end
   
   def change_username
