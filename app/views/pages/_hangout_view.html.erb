@@ -576,6 +576,7 @@ function emailButton() {
 }
 
 function startButton(event) {
+  console.log(event.target)
   if (recognizing) {
     recognition.stop();
     return;
