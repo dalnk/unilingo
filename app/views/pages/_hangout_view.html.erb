@@ -594,7 +594,8 @@ function emailButton() {
 }
 
 function startButton(event) {
-  console.log(event)
+    console.log("*** START BUTTON TOGGLED ***");
+  console.log(event);
   if (recognizing) {
     recognition.stop();
     return;
