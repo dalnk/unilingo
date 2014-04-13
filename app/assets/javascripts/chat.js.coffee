@@ -53,6 +53,8 @@ class Chat.Controller
   newMessage: (message) =>
     console.log("Message received: " + message['msg_body'])
 
+    return if message['language'] != @user.language
+
     message['user_type'] = "them"
     message['user_type'] = "me" if message['user_id'] == @user.user_id
     @messageQueue.push message
