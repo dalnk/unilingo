@@ -15,7 +15,7 @@
 
 -->
 </style>
-<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=latin" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=latin" rel="stylesheet">
 <body>
 
 <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
@@ -75,7 +75,6 @@ function showParticipants() {
     <meta content="initial-scale=1, minimum-scale=1, width=device-width" name="viewport">
     <link href="https://plus.google.com/100585555255542998765" rel="publisher">
     <link href="https://www.google.com/images/icons/product/chrome-32.png" rel="icon" type="image/ico">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&subset=latin" rel="stylesheet">
     <link href="https://www.google.com/intl/en/chrome/assets/common/css/chrome.min.css" rel="stylesheet">
     <script src="./speechToText_files/autotrack.js">
 </script>
@@ -185,9 +184,9 @@ function showParticipants() {
   width: 31%;
   height: 90px;
   background-color: #777;
-  border-radius: 2px;
+  border-radius: 3px;
   margin: 2px;
-  border-bottom: 2px #555 solid;
+  /*border-bottom: 2px #555 solid;*/
   background-size: auto 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -200,6 +199,7 @@ function showParticipants() {
 
 .lang-label {
   position: absolute;
+  display: none;
   bottom: 10px;
   text-align: center;
   width: 100%;
@@ -342,32 +342,35 @@ textarea, input,button { outline: none; }
     </style>
     <style>
 a.c1 {font-weight: normal;}
-#en {
-  background-image: url('//<%= request.host %>:<%= request.port %>/assets/locale/en.jpg');
+#languages .language#en {
+  background-image: url('//<%= request.host %>:<%= request.port %>/assets/locale/en.png');
+  background-size: 100% 100%;
 }
 #es {
-  background-image: url('//<%= request.host %>:<%= request.port %>/assets/locale/es.jpg');
+  background-image: url('//<%= request.host %>:<%= request.port %>/assets/locale/es.png');
 }
-#zh-CN {
-  background-image: url('//<%= request.host %>:<%= request.port %>/assets/locale/zh-CN.jpg');
+#languages .language#zh-CN {
+  background-image: url('//<%= request.host %>:<%= request.port %>/assets/locale/zh-CN.png');
+  background-position: left top;
 }
 #de {
-  background-image: url('//<%= request.host %>:<%= request.port %>/assets/locale/de.jpg');
+  background-image: url('//<%= request.host %>:<%= request.port %>/assets/locale/de.png');
 }
-#fr {
-  background-image: url('//<%= request.host %>:<%= request.port %>/assets/locale/fr.jpg');
+#languages .language#fr {
+  background-image: url('//<%= request.host %>:<%= request.port %>/assets/locale/fr.png');
+  background-size: 100% 100%;
 }
 #ru {
-  background-image: url('//<%= request.host %>:<%= request.port %>/assets/locale/ru.jpg');
+  background-image: url('//<%= request.host %>:<%= request.port %>/assets/locale/ru.png');
 }
 #ja {
-  background-image: url('//<%= request.host %>:<%= request.port %>/assets/locale/ja.jpg');
+  background-image: url('//<%= request.host %>:<%= request.port %>/assets/locale/ja.png');
 }
 #ko {
-  background-image: url('//<%= request.host %>:<%= request.port %>/assets/locale/ko.jpg');
+  background-image: url('//<%= request.host %>:<%= request.port %>/assets/locale/ko.png');
 }
 #hi {
-  background-image: url('//<%= request.host %>:<%= request.port %>/assets/locale/hi.jpg');
+  background-image: url('//<%= request.host %>:<%= request.port %>/assets/locale/hi.png');
 }
     </style>
 
