@@ -17,6 +17,18 @@ class ChatController < WebsocketRails::BaseController
   end
   
   def user_msg(ev, msg, user_name, user_id, user_image_url, language, room)
+    translations = {}
+
+    for key in $redis.keys
+      user = JSON.parse($redis.get(key))
+
+      if user["room"] == room
+        if translations[user["language"]].nil?
+          
+        end
+      end
+    end
+
     WebsocketRails[room].trigger ev, {
       user_name:        user_name, 
       user_id:          user_id,
