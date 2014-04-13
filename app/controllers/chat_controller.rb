@@ -21,6 +21,10 @@ class ChatController < WebsocketRails::BaseController
     translations[language] = msg
     translations['en'] = ApplicationHelper::Client::translate(msg, 'en')
 
+    puts "done doing translation to en"
+
+    puts "room is " + room
+
     for key in $redis.keys
       user = JSON.parse($redis.get(key))
 
@@ -30,6 +34,8 @@ class ChatController < WebsocketRails::BaseController
         end
       end
     end
+
+    puts "done doing all translations"
 
     for translation in translations
       WebsocketRails[room].trigger ev, {
@@ -41,6 +47,8 @@ class ChatController < WebsocketRails::BaseController
         msg_body:         ERB::Util.html_escape(translation[1]) 
       }
     end
+
+    puts "done printing translation"
   end
   
   def client_connected
@@ -51,8 +59,12 @@ class ChatController < WebsocketRails::BaseController
     user_hash = message[:user_id].to_s + message[:room].to_s
     user = JSON.parse($redis.get(user_hash))
     puts message[:msg_body] + " in " + user["language"]
+    puts "from "
+    puts user
 
     user_msg :new_message, message[:msg_body].dup, user["user_name"], user["user_id"], user["user_image_url"], user["language"], user["room"]
+  
+    puts "Done sending message!"
   end
   
   def new_user
