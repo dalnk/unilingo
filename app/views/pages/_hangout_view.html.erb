@@ -61,8 +61,19 @@ function init() {
   gapi.hangout.onApiReady.add(
       function(eventObj) {
         if (eventObj.isApiReady) {
-          document.getElementById('showParticipants')
-            .style.visibility = 'visible';
+         var chatController2 = new Chat.Controller($('#chat').data('uri'), true);
+ 
+           console.log("Trying to join room");
+           console.log(gapi.hangout.getLocalParticipant());
+           chatController2.joinRoom(
+             gapi.hangout.getHangoutId(),
+             gapi.hangout.getLocalParticipant().person.displayName,
+             gapi.hangout.getLocalParticipant().id,
+             gapi.hangout.getLocalParticipant().person.image.url,
+             'en'
+           );
+           console.log("Done trying to join room");
+ 
         }
       });
 }
