@@ -427,22 +427,16 @@ a.c1 {font-weight: normal;}
       </div>
     </div><script src="//<%= request.host %>:<%= request.port %>/speechToText_files/chrome.min.js">
 </script><script>
-var langs =
-[['中文',             ['cmn-Hans-CN']],
-  ['Español',         ['es-MX']],
-  ['English',         ['en-US']],
-  ['Français',        ['fr-FR']],
-  ['Pусский',         ['ru-RU']],
-  ['日本語',           ['ja-JP']],
-  ['Deutsch',         ['de-DE']],
-  ['한국어',            ['ko-KR']]];
+window.langs['zh-CN'] = 'cmn-Hans-CN'
+window.langs['es'] = 'es-MX';
+window.langs['en'] = 'en-US';
+window.langs['fr'] = 'fr-FR';
+window.langs['ru'] = 'ru-RU';
+window.langs['ja'] = 'ja-JP';
+window.langs['de'] = 'de-DE';
+window.langs['ko'] = 'ko-KR';
 
-for (var i = 0; i < langs.length; i++) {
-  select_language.options[i] = new Option(langs[i][0], i);
-}
-select_language.selectedIndex = 6;
-updateCountry();
-showInfo('info_start');
+window.language_code = "en-US";
 
 var create_email = false;
 var final_transcript = '';
@@ -456,6 +450,7 @@ if (!('webkitSpeechRecognition' in window)) {
   var recognition = new webkitSpeechRecognition();
   recognition.continuous = true;
   recognition.interimResults = true;
+  recognition.lang = window.language_code;
 
   recognition.onstart = function() {
     recognizing = true;
@@ -623,7 +618,8 @@ function showButtons(style) {
       var language_code = event.target.id
       
 
-      // // Wait for gadget to load.                                                       
+      // // Wait for gadget to load.
+      window.language_code = window.langs[language_code];                                                       
       gadgets.util.registerOnLoadHandler(init(language_code));
       startButton(event);
       event.preventDefault();
