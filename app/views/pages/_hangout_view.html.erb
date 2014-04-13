@@ -583,7 +583,7 @@ if (!('webkitSpeechRecognition' in window)) {
     interim_span.innerHTML = linebreak(interim_transcript);
     if (final_transcript) {
       $('#message').val(final_transcript);
-      $('#send').submit();
+      $('#send').click();
       final_span.innerHTML = '';
     }
   };
