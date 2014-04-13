@@ -61,21 +61,8 @@ function init() {
   gapi.hangout.onApiReady.add(
       function(eventObj) {
         if (eventObj.isApiReady) {
-
-          var chatController2 = new Chat.Controller($('#chat').data('uri'), true);
-
-          console.log("Trying to join room");
-          console.log(gapi.hangout.getLocalParticipant());
-          chatController2.joinRoom(
-            gapi.hangout.getHangoutId(),
-            gapi.hangout.getLocalParticipant().person.displayName,
-            gapi.hangout.getLocalParticipant().id,
-            gapi.hangout.getLocalParticipant().person.image.url,
-            'english'
-          );
-          console.log("Done trying to join room");
-
-
+          document.getElementById('showParticipants')
+            .style.visibility = 'visible';
         }
       });
 }
@@ -174,34 +161,164 @@ gadgets.util.registerOnLoadHandler(init);
     display: none;
     margin: 0 70px;
     }
-    .message-bubble {
-      -webkit-box-shadow: rgba(0, 0, 0, 0.14902) 0px 1px 2px 0px;
-      -webkit-transition-delay: 0s, 0s;
-      -webkit-transition-duration: 0.218s, 0.218s;
-      -webkit-transition-property: left, right;
-      -webkit-transition-timing-function: ease, ease;
-      border-bottom-left-radius: 2px;
-      border-bottom-right-radius: 0px;
-      border-collapse: collapse;
-      border-top-left-radius: 2px;
-      border-top-right-radius: 2px;
-      box-shadow: rgba(0, 0, 0, 0.14902) 0px 1px 2px 0px;
-      color: rgb(38, 38, 38);
+    #chat {
+  position: relative;
+  height: auto;
+  width: 100%;
+  background-color: #DDD;
+  overflow-y: scroll; 
+  overflow-x: hidden;
+  padding-top:10px;
+  padding-bottom:10px;
+}
+
+.circle_crop { 
+  border-radius: 50%;
+  border: 2px #FFF solid;
+  overflow: hidden;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+  img.blurred-image {
+    -webkit-filter: blur(6px);
+    -moz-filter: blur(6px);
+    -o-filter: blur(6px);
+    filter: blur(6px);
+  }
+}
+
+.user_icon {
+  width: 60px;
+  height: 60px;
+}
+
+.user_icon_img {
+  width: 60px;
+  height: 60px;
+}
+    .message-me:after, .message-them:after, .message-sys:after {
+      clear: both;
+      content: ".";
       display: block;
-      float: right;
-      font-family: arial, sans-serif;
-      font-size: 13px;
-      height: 425px;
-      left: 0px;
-      max-width: 100%;
-      position: relative;
-      transition-delay: 0s, 0s;
-      transition-duration: 0.218s, 0.218s;
-      transition-property: left, right;
-      transition-timing-function: ease, ease;
-      width: 199px;
+      font-size: 0;
+      height: 0;
+      line-height: 0;
+      visibility: hidden;
     }
-    
+    .message-me, .message-them {
+
+.message-bubble {
+  -webkit-box-shadow: rgb(220, 224, 230) 0px 1px 0px 0px;
+background-color: rgb(247, 247, 247);
+background-image: -webkit-linear-gradient(bottom, rgb(242, 242, 242), rgb(255, 255, 255));
+border-bottom-color: rgba(0, 0, 0, 0.290196);
+border-bottom-left-radius: 4px;
+border-bottom-right-radius: 4px;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-collapse: collapse;
+border-image-outset: 0px;
+border-image-repeat: stretch;
+border-image-slice: 100%;
+border-image-source: none;
+border-image-width: 1;
+border-left-color: rgba(0, 0, 0, 0.180392);
+border-left-style: solid;
+border-left-width: 1px;
+border-right-color: rgba(0, 0, 0, 0.180392);
+border-right-style: solid;
+border-right-width: 1px;
+border-top-color: rgba(0, 0, 0, 0.180392);
+border-top-left-radius: 4px;
+border-top-right-radius: 4px;
+border-top-style: solid;
+border-top-width: 1px;
+box-shadow: rgb(220, 224, 230) 0px 1px 0px 0px;
+clear: none;
+color: rgb(62, 69, 76);
+display: block;
+float: left;
+font-family: Helvetica, Arial, 'lucida grande', tahoma, verdana, arial, sans-serif;
+font-size: 16px;
+height: auto;
+margin-bottom: 5px;
+margin-left: 1px;
+margin-right: 0px;
+margin-top: 5px;
+max-width: 490px;
+min-height: 14px;
+min-width: 14px;
+padding-bottom: 3px;
+padding-left: 5px;
+padding-right: 6px;
+padding-top: 4px;
+position: relative;
+text-align: left;
+text-shadow: rgba(255, 255, 255, 0.498039) 0px 1px 0px;
+width: auto;
+word-wrap: break-word;
+
+}
+.message-image{
+  height: auto;
+  margin-bottom: 5px;
+  margin-left: 1px;
+  margin-right: 0px;
+  margin-top: 5px;
+  max-width: 490px;
+  min-height: 14px;
+  min-width: 14px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+  padding-right: 6px;
+  padding-top: 4px;
+  position: relative;
+  text-align: left;
+  display: block;
+  float: left;width: auto;
+  word-wrap: break-word;
+}
+}
+textarea, input,button { outline: none; }
+.message-them {
+  position: relative;
+  padding: 5px;
+  min-height: 64px;
+  width: calc(100% - 10px);
+  float: left;
+  padding-bottom:0;
+  right: 300px;
+  opacity: 0;
+
+  .user_icon{
+    position: absolute;
+    left: 5px;
+  }
+  .message-bubble,.message-image {
+    left: 74px;
+    top: -4px;
+  }
+}
+
+.message-me {
+  position: relative;
+  padding: 5px;
+  min-height: 64px;
+  width: calc(100% - 10px);
+  float: right;
+  padding-bottom:0;
+  right: -300px;
+  opacity: 0;
+
+  .user_icon{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+  .message-bubble,.message-image {
+    float: right;
+    right: 76px;
+    top: -4px;
+  }
+}
     </style>
     <style>
 a.c1 {font-weight: normal;}
@@ -226,10 +343,8 @@ a.c1 {font-weight: normal;}
 
   </head>
   <body class="" id="grid">
-
-
-    <div id="chat" class="well" data-uri="<%= request.host %>:<%= request.port %>/websocket">
-</div>
+    <div id="chat" data-uri="<%= request.host %>:<%= request.port %>/websocket">
+    </div>
 
 <div class="form-inline well" style="color:white;">
   <fieldset>
