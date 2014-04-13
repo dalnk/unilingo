@@ -437,6 +437,7 @@ window.langs['ko'] = 'ko-KR';
 
 window.language_code = "en-US";
 
+var true_failure = false;
 var create_email = false;
 var final_transcript = '';
 var recognizing = false;
@@ -461,6 +462,7 @@ if (!('webkitSpeechRecognition' in window)) {
   recognition.onerror = function(event) {
     console.log("onerror hit!");
     console.log(event);
+    true_failure = true;
 
     if (event.error == 'network') {
       console.log("network error encountered; requesting restart!!");
@@ -491,6 +493,11 @@ if (!('webkitSpeechRecognition' in window)) {
   recognition.onend = function() {
       console.log("*** END EVENT ***");
     recognizing = false;
+    if (!true_failure) {
+        console.log("*** !true_failure ***");
+        restart_recognition = true;
+        true_failure = true;
+    }
     if (ignore_onend) {
       return;
     }
