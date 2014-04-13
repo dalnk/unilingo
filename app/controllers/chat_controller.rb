@@ -19,6 +19,7 @@ class ChatController < WebsocketRails::BaseController
   def user_msg(ev, msg, user_name, user_id, user_image_url, language, room)
     translations = {}
     translations[language] = msg
+    translations['en'] = ApplicationHelper::Client::translate(msg, 'en')
 
     for key in $redis.keys
       user = JSON.parse($redis.get(key))
