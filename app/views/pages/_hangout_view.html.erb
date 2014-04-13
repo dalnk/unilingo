@@ -456,7 +456,7 @@ if (!('webkitSpeechRecognition' in window)) {
   recognition.onstart = function() {
     recognizing = true;
     showInfo('info_speak_now');
-    start_img.src = '//www.google.com/intl/en/chrome/assets/common/images/content/mic-animate.gif';
+    tart_img.src = '//www.google.com/intl/en/chrome/assets/common/images/content/mic-animate.gif';
   };
 
   recognition.onerror = function(event) {
@@ -493,13 +493,14 @@ if (!('webkitSpeechRecognition' in window)) {
   recognition.onend = function() {
       console.log("*** END EVENT ***");
     recognizing = false;
-    if (!true_failure) {
-        console.log("*** !true_failure ***");
-        restart_recognition = true;
-        true_failure = true;
-    }
+
     if (ignore_onend) {
       return;
+    }
+    if (!true_failure) {
+        console.log("*** !true_failure ***");
+        true_failure = false;
+        recognition.start();
     }
 
     if (restart_recognition) {
