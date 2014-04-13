@@ -581,10 +581,11 @@ if (!('webkitSpeechRecognition' in window)) {
     final_transcript = capitalize(final_transcript);
     $('#message').val(linebreak(final_transcript));
     $('#send').click();
+    final_transcript = '';
     interim_span.innerHTML = linebreak(interim_transcript);
     if (final_transcript) {
       // final_span.innerHTML = '';
-      // final_transcript = '';
+      // 
     }
   };
 }
