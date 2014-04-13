@@ -578,6 +578,7 @@ if (!('webkitSpeechRecognition' in window)) {
         interim_transcript += event.results[i][0].transcript;
       }
     }
+    console.log('onResult final:'+final_transcript+", interim:"+interim_transcript);
     final_transcript = capitalize(final_transcript);
     $('#message').val(linebreak(final_transcript));
     interim_span.innerHTML = linebreak(interim_transcript);
