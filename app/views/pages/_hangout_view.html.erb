@@ -172,15 +172,24 @@ gadgets.util.registerOnLoadHandler(init);
     display: none;
     margin: 0 70px;
     }
-    #chat {
+    #chat,#languages {
   position: relative;
   height: calc(100% - 350px);
-  width: 100%;
+  width: 350px;
   /*background-color: #DDD;*/
   overflow-y: scroll; 
   overflow-x: hidden;
   padding-top:10px;
   padding-bottom:10px;
+  margin: 0 auto;
+}
+#languages .language {
+  display: inline-block;
+  width: 32.5%;
+  height: 100px;
+  background-color: #777;
+  border-radius: 2px;
+  border-bottom: 4px #555 solid;
 }
 
 .browser-landing {
@@ -310,6 +319,9 @@ textarea, input,button { outline: none; }
     right: 76px;
     top: -4px;
   }
+  fieldset {
+    display: none;
+  }
     </style>
     <style>
 a.c1 {font-weight: normal;}
@@ -334,6 +346,26 @@ a.c1 {font-weight: normal;}
 
   </head>
   <body class="" id="grid">
+    <div id="languages">
+      <div class="language"></div>
+      <div class="language"></div>
+      <div class="language"></div>
+      <div class="language"></div>
+      <div class="language"></div>
+      <div class="language"></div>
+      <div class="language"></div>
+      <div class="language"></div>
+      <div class="language"></div>
+      <div class="language"></div>
+      <div class="language"></div>
+      <div class="language"></div>
+      <div class="language"></div>
+      <div class="language"></div>
+      <div class="language"></div>
+      <div class="language"></div>
+      <div class="language"></div>
+      <div class="language"></div>
+    </div>
     <div id="chat" data-uri="<%= request.host %>:<%= request.port %>/websocket">
     </div>
 
