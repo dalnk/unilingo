@@ -369,12 +369,12 @@ a.c1 {font-weight: normal;}
       <a href="#" class="language" id="zh-CN"><div class="lang-label">中文</div></a>
       <a href="#" class="language" id="es"><div class="lang-label">Español</div></a>
       <a href="#" class="language" id="en"><div class="lang-label">English</div></a>
-      <a href="#" class="language" id="hi"><div class="lang-label">हिन्दी</div></a>
       <a href="#" class="language" id="fr"><div class="lang-label">Francais</div></a>
       <a href="#" class="language" id="ru"><div class="lang-label">Русский</div></a>
       <a href="#" class="language" id="ja"><div class="lang-label">日本語</div></a>
       <a href="#" class="language" id="de"><div class="lang-label">Deutsch</div></a>
       <a href="#" class="language" id="ko"><div class="lang-label">한국어</div></a>
+      <a href="#" class="language" id="hi"><div class="lang-label">हिन्दी</div></a>
     </div>
     <div id="chat" data-uri="<%= request.host %>:<%= request.port %>/websocket">
     </div>
@@ -418,7 +418,7 @@ a.c1 {font-weight: normal;}
           </p>
         </div>
         <div id="div_start" style="display: none;">
-          <button id="start_button" onclick="startButton(event)" ><img alt="Start" id="start_img" src="file:///intl/en/chrome/assets/common/images/content/mic-slash.gif"></button>
+          <button id="start_button" onclick="startButton(event)" ><img alt="Start" id="start_img" src="//www.google.com/intl/en/chrome/assets/common/images/content/mic-slash.gif"></button>
         </div>
         <div id="results">
           <span class="final" id="final_span"></span> <span class="interim" id="interim_span"></span>
@@ -429,72 +429,23 @@ a.c1 {font-weight: normal;}
             <option value="en-AU">Australia</option><option value="en-CA">Canada</option><option value="en-IN">India</option><option value="en-NZ">New Zealand</option><option value="en-ZA">South Africa</option><option value="en-GB">United Kingdom</option><option value="en-US">United States</option></select>
         </div>
       </div>
-    </div><script src="./speechToText_files/chrome.min.js">
+    </div><script src="//<%= request.host %>:<%= request.port %>/speechToText_files/chrome.min.js">
 </script><script>
 var langs =
-[['Afrikaans',       ['af-ZA']],
- ['Bahasa Indonesia',['id-ID']],
- ['Bahasa Melayu',   ['ms-MY']],
- ['Català',          ['ca-ES']],
- ['Čeština',         ['cs-CZ']],
- ['Deutsch',         ['de-DE']],
- ['English',         ['en-US']],
- ['Español',         ['es-AR', 'Argentina'],
-                     ['es-BO', 'Bolivia'],
-                     ['es-CL', 'Chile'],
-                     ['es-CO', 'Colombia'],
-                     ['es-CR', 'Costa Rica'],
-                     ['es-EC', 'Ecuador'],
-                     ['es-SV', 'El Salvador'],
-                     ['es-ES', 'España'],
-                     ['es-US', 'Estados Unidos'],
-                     ['es-GT', 'Guatemala'],
-                     ['es-HN', 'Honduras'],
-                     ['es-MX', 'México'],
-                     ['es-NI', 'Nicaragua'],
-                     ['es-PA', 'Panamá'],
-                     ['es-PY', 'Paraguay'],
-                     ['es-PE', 'Perú'],
-                     ['es-PR', 'Puerto Rico'],
-                     ['es-DO', 'República Dominicana'],
-                     ['es-UY', 'Uruguay'],
-                     ['es-VE', 'Venezuela']],
- ['Euskara',         ['eu-ES']],
- ['Français',        ['fr-FR']],
- ['Galego',          ['gl-ES']],
- ['Hrvatski',        ['hr_HR']],
- ['IsiZulu',         ['zu-ZA']],
- ['Íslenska',        ['is-IS']],
- ['Italiano',        ['it-IT', 'Italia'],
-                     ['it-CH', 'Svizzera']],
- ['Magyar',          ['hu-HU']],
- ['Nederlands',      ['nl-NL']],
- ['Norsk bokmål',    ['nb-NO']],
- ['Polski',          ['pl-PL']],
- ['Português',       ['pt-BR', 'Brasil'],
-                     ['pt-PT', 'Portugal']],
- ['Română',          ['ro-RO']],
- ['Slovenčina',      ['sk-SK']],
- ['Suomi',           ['fi-FI']],
- ['Svenska',         ['sv-SE']],
- ['Türkçe',          ['tr-TR']],
- ['български',       ['bg-BG']],
- ['Pусский',         ['ru-RU']],
- ['Српски',          ['sr-RS']],
- ['한국어',            ['ko-KR']],
- ['中文',             ['cmn-Hans-CN', '普通话 (中国大陆)'],
-                     ['cmn-Hans-HK', '普通话 (香港)'],
-                     ['cmn-Hant-TW', '中文 (台灣)'],
-                     ['yue-Hant-HK', '粵語 (香港)']],
- ['日本語',           ['ja-JP']],
- ['Lingua latīna',   ['la']]];
+[['中文',             ['cmn-Hans-CN']],
+  ['Español',         ['es-MX']],
+  ['English',         ['en-US']],
+  ['Français',        ['fr-FR']],
+  ['Pусский',         ['ru-RU']],
+  ['日本語',           ['ja-JP']],
+  ['Deutsch',         ['de-DE']],
+  ['한국어',            ['ko-KR']]];
 
 for (var i = 0; i < langs.length; i++) {
   select_language.options[i] = new Option(langs[i][0], i);
 }
 select_language.selectedIndex = 6;
 updateCountry();
-select_dialect.selectedIndex = 6;
 showInfo('info_start');
 
 function updateCountry() {
