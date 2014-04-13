@@ -50,10 +50,7 @@ class ChatController < WebsocketRails::BaseController
   def new_message
     user_hash = message[:user_id].to_s + message[:room].to_s
     user = JSON.parse($redis.get(user_hash))
-
-    puts "hi dennis"
-    puts user
-    puts "bye dennis"
+    puts message[:msg_body] + " in " + user["language"]
 
     user_msg :new_message, message[:msg_body].dup, user["user_name"], user["user_id"], user["user_image_url"], user["language"], user["room"]
   end
