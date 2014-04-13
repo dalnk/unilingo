@@ -169,7 +169,7 @@ function showParticipants() {
     }
     #chat,#languages {
   position: relative;
-  height: calc(100% - 350px);
+  height: calc(100% - 88px);
   width: 300px;
   /*background-color: #DDD;*/
   overflow-y: scroll; 
@@ -714,7 +714,7 @@ function showButtons(style) {
 
   
     $("a.language").click(function getRekt(event) {
-      $('#languages').animate({opacity:0,"margin-right":"-100px"});
+      $('#languages').animate({opacity:0,"margin-right":"-100px"}, function destroy(){$('#languages').remove()});
       var language_code = event.target.id
       
 
