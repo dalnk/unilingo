@@ -66,7 +66,9 @@ class Chat.Controller
     console.log('sent message')
     message = $('#message').val()
     @dispatcher.trigger 'new_message', {user_name: @user.user_name, msg_body: message, user_id: @user.user_id, room: @user.room }
+    console.log('done sending message!!')
     $('#message').val('')
+    console.log('done sending message!!!')
 
   updateUserList: (userList) =>
     console.log("udpatedUserList called")

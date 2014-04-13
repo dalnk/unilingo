@@ -23,6 +23,8 @@ class ChatController < WebsocketRails::BaseController
 
     puts "done doing translation to en"
 
+    puts "room is " + room
+
     for key in $redis.keys
       user = JSON.parse($redis.get(key))
 
