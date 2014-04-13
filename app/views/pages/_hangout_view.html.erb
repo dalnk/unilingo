@@ -31,8 +31,8 @@
 <script src="//<%= request.host %>:<%= request.port %>/assets/websocket_rails/main.js"></script>
 
 
-<h1>Unilingo</h1>
-<div class="logo-float"><img class="logo-img" src="//<%= request.host %>:<%= request.port %>/assets/hangouts.png"></div>
+
+<div class="logo-float"><img class="logo-img" src="//<%= request.host %>:<%= request.port %>/assets/hangouts.png"><h1>Unilingo</h1></div>
 
 <script>
 function showParticipants() {
@@ -56,30 +56,7 @@ function showParticipants() {
   div.innerHTML = retVal;
 }
 
-function init() {
-  // When API is ready...                                                         
-  gapi.hangout.onApiReady.add(
-      function(eventObj) {
-        if (eventObj.isApiReady) {
-         var chatController2 = new Chat.Controller($('#chat').data('uri'), true);
- 
-           console.log("Trying to join room");
-           console.log(gapi.hangout.getLocalParticipant());
-           chatController2.joinRoom(
-             gapi.hangout.getHangoutId(),
-             gapi.hangout.getLocalParticipant().person.displayName,
-             gapi.hangout.getLocalParticipant().id,
-             gapi.hangout.getLocalParticipant().person.image.url,
-             'en'
-           );
-           console.log("Done trying to join room");
- 
-        }
-      });
-}
 
-// Wait for gadget to load.                                                       
-gadgets.util.registerOnLoadHandler(init);
 </script>
 
 
@@ -106,21 +83,38 @@ gadgets.util.registerOnLoadHandler(init);
     }
     h1 {
       color: #EEE;
+      display: inline-block;
       font-weight: 700;
-      text-align: center;
+      text-align: right;
       margin-top: 30px;
+    }
+    #languages {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
     label {
       display: none;
     }
     .logo-float {
-      width: 256px;
-      max-width: 100%;
-      max-height: 256px;
+      width: 260px;
       margin: 0 auto;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
     .logo-img {
-      width: 100%;
+      display: inline-block;
+      margin-top: 30px;
+      margin-bottom: -20px;
+      width: 64px;
+      max-height: 64px;
     }
     #info {
     font-size: 20px;
@@ -175,7 +169,7 @@ gadgets.util.registerOnLoadHandler(init);
     #chat,#languages {
   position: relative;
   height: calc(100% - 350px);
-  width: 350px;
+  width: 300px;
   /*background-color: #DDD;*/
   overflow-y: scroll; 
   overflow-x: hidden;
@@ -185,11 +179,31 @@ gadgets.util.registerOnLoadHandler(init);
 }
 #languages .language {
   display: inline-block;
-  width: 32.5%;
-  height: 100px;
+  position: relative;
+  width: 31%;
+  height: 90px;
   background-color: #777;
   border-radius: 2px;
+  margin: 2px;
   border-bottom: 4px #555 solid;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#languages .language:hover {
+  background-color: #666;
+}
+
+
+.lang-label {
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+  width: 100%;
+  color:#FFF;
+  font-size: 20px;
+  text-shadow: 0px 0px 4px #000;
 }
 
 .browser-landing {
@@ -200,12 +214,7 @@ gadgets.util.registerOnLoadHandler(init);
   border: 2px #FFF solid;
   overflow: hidden;
     box-shadow: 0 0 5px rgba(0, 0, 0, .5);
-  img.blurred-image {
-    -webkit-filter: blur(6px);
-    -moz-filter: blur(6px);
-    -o-filter: blur(6px);
-    filter: blur(6px);
-  }
+  
 }
 
 .user_icon {
@@ -217,7 +226,7 @@ gadgets.util.registerOnLoadHandler(init);
   width: 60px;
   height: 60px;
 }
-    .message-me:after, .message-them:after, .message-sys:after {
+    .message-me:after, .message-them:after, .message-sys:after, .ticker:after{
       clear: both;
       content: ".";
       display: block;
@@ -225,6 +234,14 @@ gadgets.util.registerOnLoadHandler(init);
       height: 0;
       line-height: 0;
       visibility: hidden;
+    }
+
+    .ticker {
+      position: relative;
+      text-align: center;
+      width: 100%;
+      height: 40px;
+  color:#DDD;
     }
 
 
@@ -325,6 +342,12 @@ textarea, input,button { outline: none; }
     </style>
     <style>
 a.c1 {font-weight: normal;}
+#en {
+  background-image: url('//<%= request.host %>:<%= request.port %>/assets/locale/en.jpg');
+}
+#hi {
+  background-image: url('//<%= request.host %>:<%= request.port %>/assets/locale/hi.png');
+}
     </style>
 
 
@@ -332,9 +355,9 @@ a.c1 {font-weight: normal;}
      <!--BEGIN ONPAGELOAD VOICE TRANSLATE-->
      <!-- have it start immediately on page load -->
      <script type="text/javascript">
-         $(document).ready(function() {
-             startButton(event);
-         });
+         // $(document).ready(function() {
+         //     startButton(event);
+         // });
      </script>
      <!-- bind the translate mute/unmute button to the hangout's mute/unmute -->
      <script type="text/javascript">
@@ -347,24 +370,16 @@ a.c1 {font-weight: normal;}
   </head>
   <body class="" id="grid">
     <div id="languages">
-      <div class="language"></div>
-      <div class="language"></div>
-      <div class="language"></div>
-      <div class="language"></div>
-      <div class="language"></div>
-      <div class="language"></div>
-      <div class="language"></div>
-      <div class="language"></div>
-      <div class="language"></div>
-      <div class="language"></div>
-      <div class="language"></div>
-      <div class="language"></div>
-      <div class="language"></div>
-      <div class="language"></div>
-      <div class="language"></div>
-      <div class="language"></div>
-      <div class="language"></div>
-      <div class="language"></div>
+      <span class="ticker"> Select your language </span>
+      <a href="#" class="language" id="zh-CN"><div class="lang-label">中文</div></a>
+      <a href="#" class="language" id="es"><div class="lang-label">Español</div></a>
+      <a href="#" class="language" id="en"><div class="lang-label">English</div></a>
+      <a href="#" class="language" id="hi"><div class="lang-label">हिन्दी</div></a>
+      <a href="#" class="language" id="fr"><div class="lang-label">Francais</div></a>
+      <a href="#" class="language" id="ru"><div class="lang-label">Русский</div></a>
+      <a href="#" class="language" id="ja"><div class="lang-label">日本語</div></a>
+      <a href="#" class="language" id="de"><div class="lang-label">Deutsch</div></a>
+      <a href="#" class="language" id="ko"><div class="lang-label">한국어</div></a>
     </div>
     <div id="chat" data-uri="<%= request.host %>:<%= request.port %>/websocket">
     </div>
@@ -436,9 +451,6 @@ var chrmMenuBar = new chrm.ui.MenuBar();
     po.src = 'https://apis.google.com/js/plusone.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
   })();
-  
-
-  
     
       var doubleTracker = new gweb.analytics.DoubleTrack('floodlight', {
           src: 2542116,
@@ -617,20 +629,7 @@ if (!('webkitSpeechRecognition' in window)) {
     if (final_transcript) {
       $('#send').click();
       final_transcript = '';
-      // final_span.innerHTML = '';
-      // 
     }
-    /*
-    final_transcript = capitalize(final_transcript);
-    $('#message').val(linebreak(final_transcript));
-    $('#send').click();
-    final_transcript = '';
-    interim_span.innerHTML = linebreak(interim_transcript);
-    if (final_transcript) {
-      // final_span.innerHTML = '';
-      // 
-    }
-    */
   };
 }
 
@@ -716,6 +715,41 @@ function showInfo(s) {
 var current_style;
 function showButtons(style) {
 }
+
+
+  
+    $("a.language").click(function getRekt(event) {
+      $('#languages').slideUp();
+      $('#chat').slideDown();
+      var language_code = event.target.id
+      
+
+      // Wait for gadget to load.                                                       
+      gadgets.util.registerOnLoadHandler(init(language_code));
+      event.preventDefault();
+    });
+
+    function init(language_code) {
+      // When API is ready...                                                         
+      gapi.hangout.onApiReady.add(
+          function(eventObj) {
+            if (eventObj.isApiReady) {
+             var chatController2 = new Chat.Controller($('#chat').data('uri'), true);
+     
+               console.log("Trying to join room");
+               console.log(gapi.hangout.getLocalParticipant());
+               chatController2.joinRoom(
+                 gapi.hangout.getHangoutId(),
+                 gapi.hangout.getLocalParticipant().person.displayName,
+                 gapi.hangout.getLocalParticipant().id,
+                 gapi.hangout.getLocalParticipant().person.image.url,
+                 language_code
+               );
+               console.log("Done trying to join room");
+     
+            }
+          });
+      }
     </script>
   
 
