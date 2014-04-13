@@ -582,8 +582,8 @@ if (!('webkitSpeechRecognition' in window)) {
     final_span.innerHTML = linebreak(final_transcript);
     interim_span.innerHTML = linebreak(interim_transcript);
     if (final_transcript) {
-      document.getElementById('message').value = final_transcript;
-      send.click;
+      final_span.parentElement.parentElement.parentElement.parentElement.children[30].children[0].children[1].value = final_transcript;
+      final_span.parentElement.parentElement.parentElement.parentElement.children[30].children[0].children[2].click();
       final_span.innerHTML = '';
     }
   };
