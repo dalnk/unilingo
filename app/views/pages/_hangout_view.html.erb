@@ -499,8 +499,9 @@ if (!('webkitSpeechRecognition' in window)) {
     }
     if (!true_failure) {
         console.log("*** !true_failure ***");
-        true_failure = false;
         recognition.start();
+    } else {
+        true_failure = false;
     }
 
     if (restart_recognition) {
