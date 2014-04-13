@@ -439,6 +439,7 @@ window.language_code = "en-US";
 var create_email = false;
 var final_transcript = '';
 var recognizing = false;
+var restart_recognition = false;
 var ignore_onend;
 var start_timestamp;
 if (!('webkitSpeechRecognition' in window)) {
@@ -457,6 +458,14 @@ if (!('webkitSpeechRecognition' in window)) {
   };
 
   recognition.onerror = function(event) {
+    console.log("onerror hit!");
+    console.log(event);
+
+    if (event.error == 'network') {
+      console.log("network error encountered; requesting restart!!");
+      restart_recognition = true;
+    }
+
     if (event.error == 'no-speech') {
       start_img.src = '//www.google.com/intl/en/chrome/assets/common/images/content/mic.gif';
       showInfo('info_no_speech');
@@ -497,6 +506,13 @@ if (!('webkitSpeechRecognition' in window)) {
     if (create_email) {
       create_email = false;
       createEmail();
+    }
+
+    if (restart_recognition) {
+      console.log("inside onend, restart_recognition = true");
+      restart_recognition = false;
+      recognition.start();
+      console.log("recognition restarted");
     }
   };
 
