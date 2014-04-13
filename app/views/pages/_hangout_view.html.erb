@@ -491,6 +491,14 @@ if (!('webkitSpeechRecognition' in window)) {
     if (ignore_onend) {
       return;
     }
+
+    if (restart_recognition) {
+      console.log("inside onend, restart_recognition = true");
+      restart_recognition = false;
+      setTimeout(function() { recognition.start(); console.log("started recognition again"); }, 3000);
+      console.log("recognition restarted");
+    }
+
     start_img.src = '//www.google.com/intl/en/chrome/assets/common/images/content/mic.gif';
     if (!final_transcript) {
       showInfo('info_start');
@@ -506,13 +514,6 @@ if (!('webkitSpeechRecognition' in window)) {
     if (create_email) {
       create_email = false;
       createEmail();
-    }
-
-    if (restart_recognition) {
-      console.log("inside onend, restart_recognition = true");
-      restart_recognition = false;
-      recognition.start();
-      console.log("recognition restarted");
     }
   };
 
