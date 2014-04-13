@@ -83,6 +83,7 @@ class Chat.Controller
   appendMessage: (message) =>
     messageTemplate = @template(message)
     $('#chat').append messageTemplate
+    $('div#chat').scrollTo({top:'100%', left:'0px'},200)
     messageTemplate.slideDown 140
 
   joinRoom: (room, userName, userId, userImageUrl, language) =>
