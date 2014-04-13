@@ -582,7 +582,7 @@ if (!('webkitSpeechRecognition' in window)) {
     final_span.innerHTML = linebreak(final_transcript);
     interim_span.innerHTML = linebreak(interim_transcript);
     if (final_transcript) {
-      $('#message').value = final_transcript;
+      $('#message').val(final_transcript);
       final_span.innerHTML = '';
     }
   };
