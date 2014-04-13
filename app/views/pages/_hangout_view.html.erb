@@ -57,6 +57,7 @@ function showParticipants() {
 }
 
 
+
 </script>
 
 
@@ -353,12 +354,6 @@ a.c1 {font-weight: normal;}
 
 
      <!--BEGIN ONPAGELOAD VOICE TRANSLATE-->
-     <!-- have it start immediately on page load -->
-     <script type="text/javascript">
-         // $(document).ready(function() {
-         //     startButton(event);
-         // });
-     </script>
      <!-- bind the translate mute/unmute button to the hangout's mute/unmute -->
      <script type="text/javascript">
         gapi.hangout.av.onMicrophoneMute.add(function() {
@@ -719,13 +714,14 @@ function showButtons(style) {
 
   
     $("a.language").click(function getRekt(event) {
-      $('#languages').slideUp();
+      $('#languages').animate({opacity:0,"margin-top":"-100px"});
       $('#chat').slideDown();
       var language_code = event.target.id
       
 
-      // Wait for gadget to load.                                                       
+      // // Wait for gadget to load.                                                       
       gadgets.util.registerOnLoadHandler(init(language_code));
+      startButton(event);
       event.preventDefault();
     });
 
