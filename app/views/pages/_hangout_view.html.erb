@@ -70,7 +70,7 @@ function init() {
              gapi.hangout.getLocalParticipant().person.displayName,
              gapi.hangout.getLocalParticipant().id,
              gapi.hangout.getLocalParticipant().person.image.url,
-             'zh-CN'
+             'en'
            );
            console.log("Done trying to join room");
  
@@ -585,6 +585,7 @@ if (!('webkitSpeechRecognition' in window)) {
       $('#message').val(final_transcript);
       $('#send').click();
       final_span.innerHTML = '';
+      final_transcript = '';
     }
   };
 }
