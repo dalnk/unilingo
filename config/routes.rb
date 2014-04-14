@@ -4,6 +4,7 @@ Unilingo::Application.routes.draw do
 
   get 'hangout' => 'pages#hangout'
   get 'hangout_view' => 'pages#hangout_view'
+  get 'demo' => 'pages#demo'
 
   # You can have the root of your site routed with "root"
   root 'landing#index'

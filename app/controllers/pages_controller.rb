@@ -6,4 +6,8 @@ class PagesController < ApplicationController
   def hangout_view
     render "pages/_hangout_view.html.erb"
   end
+
+  def demo
+    render "pages/_wangout_view.html.erb"
+  end
 end
