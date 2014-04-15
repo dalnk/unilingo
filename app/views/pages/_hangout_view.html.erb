@@ -489,7 +489,7 @@ if (!('webkitSpeechRecognition' in window)) {
   recognition.onstart = function() {
     recognizing = true;
     showInfo('info_speak_now');
-    tart_img.src = '//www.google.com/intl/en/chrome/assets/common/images/content/mic-animate.gif';
+    start_img.src = '//www.google.com/intl/en/chrome/assets/common/images/content/mic-animate.gif';
   };
 
   recognition.onerror = function(event) {
