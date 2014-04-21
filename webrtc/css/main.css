@@ -1,7 +1,7 @@
 a:link { color: #FFFFFF; }
 a:visited {color: #FFFFFF; }
 html, body {
-  background-color: #000000;
+  background-color: #181818;
   height: 100%;
   font-family: Verdana, Arial, Helvetica, sans-serif;
 }
@@ -13,15 +13,14 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 28px;
-  background-color: #3F3F3F;
+  height: 40px;
+  background-color: #282828;
   color: #FFFFFF;
-  font-size: 13px; font-weight: bold;
+  font-size: 13px; font-weight: thin;
   line-height: 28px;
   text-align: center;
 }
 #container {
-  background-color: #000000;
   position: absolute;
   height: 100%;
   width: 100%;
